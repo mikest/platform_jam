@@ -1,0 +1,233 @@
+[gd_scene format=3 uid="uid://b7cokuw7b7r4"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cfeb1v375ydq" path="res://main.gd" id="1_w48qg"]
+[ext_resource type="Shader" uid="uid://cvd0x7lon1ur6" path="res://addons/sky_3d/shaders/SkyMaterial.gdshader" id="3_dg77c"]
+[ext_resource type="Texture2D" uid="uid://cfqk60lpl5ljv" path="res://addons/sky_3d/assets/resources/SNoise.tres" id="4_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://cecwdqjol0ckd" path="res://addons/sky_3d/assets/textures/noiseClouds.png" id="5_w48qg"]
+[ext_resource type="Texture2D" uid="uid://2r8ylu6rg5dp" path="res://addons/sky_3d/assets/thirdparty/textures/moon/MoonMap.png" id="6_vivmo"]
+[ext_resource type="Texture2D" uid="uid://djpfuyxkryegn" path="res://addons/sky_3d/assets/textures/noise.jpg" id="7_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://bm7dot7t7u1q4" path="res://addons/sky_3d/assets/thirdparty/textures/milkyway/StarField.jpg" id="8_yaehf"]
+[ext_resource type="Texture2D" uid="uid://c1vwcdcdvb74a" path="res://addons/sky_3d/assets/thirdparty/textures/milkyway/Milkyway.jpg" id="9_074og"]
+[ext_resource type="Script" uid="uid://deo0gxkmk2ahd" path="res://addons/sky_3d/src/Sky3D.gd" id="10_cegan"]
+[ext_resource type="Script" uid="uid://b4tkplvh7fq40" path="res://addons/sky_3d/src/SkyDome.gd" id="11_82xsv"]
+[ext_resource type="Script" uid="uid://cjmkcj8hwm7ts" path="res://addons/sky_3d/src/TimeOfDay.gd" id="12_getpj"]
+[ext_resource type="Material" uid="uid://cruwbpf2bajdx" path="res://materials/water_material.tres" id="13_074og"]
+[ext_resource type="ArrayMesh" uid="uid://bl31my1kobr67" path="res://addons/kaykit_furniture_bits/Assets/obj/couch.obj" id="15_2cqfq"]
+[ext_resource type="Script" uid="uid://cmc3mdqqf8fg" path="res://addons/atlas_recolor/scripts/atlas_recolor_shader.gd" id="15_074og"]
+[ext_resource type="PackedScene" uid="uid://brqjryk31kwwu" path="res://level.tscn" id="15_vivmo"]
+[ext_resource type="Shader" uid="uid://c8do4in6dx6x" path="res://addons/atlas_recolor/shader/atlas_recolor.gdshader" id="16_cegan"]
+[ext_resource type="Texture2D" uid="uid://nwerjbthuf3y" path="res://addons/kaykit_furniture_bits/Assets/obj/furniturebits_texture.png" id="17_074og"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ryguw"]
+shader = ExtResource("3_dg77c")
+shader_parameter/sky_visible = true
+shader_parameter/color_correction = Vector2(0, 1)
+shader_parameter/ground_color = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/horizon_offset = 0.0
+shader_parameter/atm_darkness = 0.5
+shader_parameter/atm_sun_intensity = 18.0
+shader_parameter/atm_day_tint = Color(0.807843, 0.909804, 1, 1)
+shader_parameter/atm_horizon_light_tint = Color(0.980392, 0.635294, 0.462745, 1)
+shader_parameter/atm_night_tint = Color(0, 0, 0, 0)
+shader_parameter/atm_level_params = Vector3(1, 0, 0)
+shader_parameter/atm_thickness = 0.7
+shader_parameter/atm_beta_ray = Vector3(5.804544e-06, 1.3562913e-05, 3.311258e-05)
+shader_parameter/atm_beta_mie = Vector3(3.038e-08, 3.038e-08, 3.038e-08)
+shader_parameter/sun_light_color = Color(1, 1, 1, 1)
+shader_parameter/sun_disk_color = Color(0.996094, 0.541334, 0.140076, 1)
+shader_parameter/sun_disk_intensity = 30.0
+shader_parameter/sun_disk_size = 0.02
+shader_parameter/atm_sun_mie_tint = Color(1, 1, 1, 1)
+shader_parameter/atm_sun_mie_intensity = 1.0
+shader_parameter/atm_sun_partial_mie_phase = Vector3(0.36, 1.64, 1.6)
+shader_parameter/moon_color = Color(1, 1, 1, 1)
+shader_parameter/moon_texture = ExtResource("6_vivmo")
+shader_parameter/moon_texture_alignment = Vector3(7, 1.4, 4.8)
+shader_parameter/moon_texture_flip_u = false
+shader_parameter/moon_texture_flip_v = false
+shader_parameter/moon_size = 0.07
+shader_parameter/atm_moon_mie_tint = Color(0.137255, 0.184314, 0.292196, 1)
+shader_parameter/atm_moon_mie_intensity = 0.0
+shader_parameter/atm_moon_partial_mie_phase = Vector3(0.36, 1.64, 1.6)
+shader_parameter/starmap_color = Color(0.709804, 0.709804, 0.709804, 0.854902)
+shader_parameter/starmap_texture = ExtResource("9_074og")
+shader_parameter/starmap_flip_u = false
+shader_parameter/starmap_flip_v = false
+shader_parameter/starmap_alignment = Vector3(2.68288, -0.25891, 0.40101)
+shader_parameter/star_rotation_offset = 9.38899
+shader_parameter/star_rotation = -11.00154450399628
+shader_parameter/star_tilt = -1.2915436464758039
+shader_parameter/star_field_color = Color(1, 1, 1, 1)
+shader_parameter/star_field_texture = ExtResource("8_yaehf")
+shader_parameter/star_scintillation = 0.75
+shader_parameter/star_scintillation_speed = 0.01
+shader_parameter/noise_tex = ExtResource("7_2cqfq")
+shader_parameter/clouds_night_color = Color(0.090196, 0.094118, 0.129412, 1)
+shader_parameter/cirrus_visible = true
+shader_parameter/cirrus_intensity = 2.0
+shader_parameter/cirrus_coverage = 0.5
+shader_parameter/cirrus_thickness = 1.7
+shader_parameter/cirrus_absorption = 2.0
+shader_parameter/cirrus_sky_tint_fade = 0.5
+shader_parameter/cirrus_size = 1.0
+shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
+shader_parameter/cirrus_position1 = Vector2(0.09510987, 0.09510987)
+shader_parameter/cirrus_position2 = Vector2(0.09510987, 0.09510987)
+shader_parameter/cirrus_texture = ExtResource("4_ycdy4")
+shader_parameter/cumulus_visible = true
+shader_parameter/cumulus_intensity = 0.6
+shader_parameter/cumulus_coverage = 0.55
+shader_parameter/cumulus_thickness = 0.0243
+shader_parameter/cumulus_absorption = 2.0
+shader_parameter/cumulus_noise_freq = 2.7
+shader_parameter/cumulus_sky_tint_fade = 0.0
+shader_parameter/cumulus_size = 0.5
+shader_parameter/cumulus_position = Vector2(0.47550797, 0.47550797)
+shader_parameter/cumulus_texture = ExtResource("5_w48qg")
+shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
+shader_parameter/cumulus_mie_intensity = 1.0
+shader_parameter/show_azimuthal_grid = false
+shader_parameter/azimuthal_grid_color = Color(0.87058824, 0.72156864, 0.5294118, 1)
+shader_parameter/azimuthal_grid_rotation_offset = 0.03
+shader_parameter/show_equatorial_grid = false
+shader_parameter/equatorial_grid_color = Color(0, 0.75, 1, 1)
+shader_parameter/equatorial_grid_rotation_offset = 0.03
+shader_parameter/moon_matrix = Basis(2.3283064e-10, -0.7972586, 0.60363793, -0.0044120746, -0.60363203, -0.79725087, 0.9999902, -0.0026632953, -0.0035175644)
+
+[sub_resource type="Sky" id="Sky_d13ii"]
+sky_material = SubResource("ShaderMaterial_ryguw")
+
+[sub_resource type="Environment" id="Environment_1u8w0"]
+background_mode = 2
+sky = SubResource("Sky_d13ii")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_white = 6.0
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.001
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0odxb"]
+
+[sub_resource type="WaveSampler" id="WaveSampler_h2yge"]
+material = ExtResource("13_074og")
+details_corner_position = Vector3(-528, 1000, -511)
+details_texture_size = 1024.0
+details_vertex_spacing = 0.25
+mix_sharpness = 0.25
+height = 1.5
+scale = 0.01
+speed = 0.02
+direction = Vector2(0.5, 1)
+normal_sample_range = 0.25
+normal_softness = 1.0
+max_height = 3.0
+
+[sub_resource type="BuoyancyMaterial" id="BuoyancyMaterial_yaehf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_getpj"]
+render_priority = 0
+shader = ExtResource("16_cegan")
+shader_parameter/roughness = 1.0
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/background = ExtResource("17_074og")
+shader_parameter/row1 = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/row2 = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0.7125, 0, 0.98039216, 0.640625, 0.24936827, 0.050048828, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/row3 = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/row4 = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+script = ExtResource("15_074og")
+underlay_texture = ExtResource("17_074og")
+metadata/_custom_type_script = "uid://cmc3mdqqf8fg"
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_074og"]
+points = PackedVector3Array(-1.4500782, 0.04996408, -0.75, -1.4500782, 0.02492213, -0.7434221, -1.4750391, 0.04996408, -0.7434221, -1.4500782, 0.9499166, -0.75, 1.4497848, 0.04996408, -0.75, -1.4500782, 0.0065899864, -0.7250979, -1.4741582, 0.013060155, -0.7240016, -1.4741582, 0.026000492, -0.7368442, 1.4497848, 0.02492213, -0.7434221, -1.4935396, 0.04996408, -0.7250979, -1.4747455, 0.9499166, -0.742639, -1.4738646, 0.97364056, -0.73700076, -1.4500782, 0.9744793, -0.742639, 1.4497848, 0.9499166, -0.75, 1.4747455, 0.04996408, -0.7434221, -1.4500782, 0, -0.70003915, -1.4750391, 0.0065899864, -0.70003915, 1.4497848, 0.0065899864, -0.7250979, -1.4935396, 0.02492213, -0.70003915, -1.4870791, 0.026000492, -0.7240016, 1.4738646, 0.026000492, -0.7368442, 1.4738646, 0.013060155, -0.7240016, -1.5, 0.04996408, -0.70003915, -1.5, 0.9499166, -0.70003915, -1.4926586, 0.9499166, -0.72462803, -1.4735708, 0.9869404, -0.7236883, -1.4870791, 0.97364056, -0.7236883, -1.4497846, 0.9925718, -0.7243148, -1.1000391, 1.1784095, -0.6035631, -1.1000391, 1.1219752, -0.6554033, 1.4497848, 0.9744793, -0.742639, 1.4735708, 0.97364056, -0.73700076, 1.4744518, 0.9499166, -0.742639, 1.4932458, 0.04996408, -0.7250979, -1.4500782, 0, 0.6999608, 1.4497848, 0, -0.70003915, -1.4747455, 0.0073088943, 0.6999608, 1.4747455, 0.0065899864, -0.70003915, -1.5, 0.04996408, 0.6999608, -1.4926586, 0.025401402, 0.6999608, 1.4867854, 0.026000492, -0.7240016, 1.4932458, 0.02492213, -0.70003915, -1.5, 0.9499166, 0.39784646, -1.4932458, 0.97495854, 0.40113544, -1.4926586, 0.9744793, -0.6998825, -1.4744518, 0.9925718, -0.6995693, -1.1708105, 1.1941056, -0.5006656, -1.1000391, 1.2207052, -0.5130384, 1.0997455, 1.1784095, -0.6035631, 1.0997455, 1.1219752, -0.6554033, 1.449491, 0.9925718, -0.7243148, 1.4732773, 0.9869404, -0.7236883, 1.4867854, 0.97364056, -0.7236883, 1.4923649, 0.9499166, -0.72462803, 1.5, 0.9499166, -0.70003915, 1.5, 0.04996408, -0.70003915, -1.449491, 0.0051521715, 0.7247063, -1.4735708, 0.010903432, 0.7239232, 1.4497848, 0, 0.6999608, -1.4870791, 0.023364497, 0.72361004, 1.4744518, 0.0073088943, 0.6999608, -1.4926586, 0.045051545, 0.7243931, -1.4932458, 0.6510907, 0.72486293, -1.5, 0.6478556, 0.6999608, 1.5, 0.04996408, 0.6999608, 1.4923649, 0.025401402, 0.6999608, -1.5, 0.9088191, 0.5513313, -1.4932458, 0.931225, 0.5641738, -1.4747455, 0.94764006, 0.5737275, -1.4747455, 0.9932907, 0.4034847, -1.1578896, 1.2068063, -0.44287392, -1.1000391, 1.22406, -0.43660924, 1.0997455, 1.2207052, -0.5130384, 1.4741583, 0.9925718, -0.6995693, 1.1705167, 1.1941056, -0.5006656, 1.4923649, 0.9744793, -0.6998825, 1.5, 0.9499166, 0.39784646, 1.4929523, 0.97495854, 0.40113544, -1.4489037, 0.017733054, 0.74271727, 1.4491973, 0.0051521715, 0.7247063, -1.4732772, 0.021087958, 0.737079, 1.4732773, 0.010903432, 0.7239232, -1.4738646, 0.0394201, 0.7425606, 1.4867854, 0.023364497, 0.72361004, -1.4744518, 0.65360683, 0.7431872, -1.4932458, 0.8142827, 0.68116677, -1.4747455, 0.82374835, 0.6976116, -1.5, 0.80134237, 0.65877056, 1.5, 0.6478556, 0.6999608, 1.4929523, 0.6510907, 0.72486293, 1.4923649, 0.045051545, 0.7243931, -1.4491973, 0.953631, 0.577173, -1.449491, 0.9998807, 0.40442443, 1.0997455, 1.22406, -0.43660924, 1.1575959, 1.2068063, -0.44287392, 1.4744518, 0.9932907, 0.4034847, 1.5, 0.9088191, 0.5513313, 1.4929523, 0.931225, 0.5641738, 1.4744518, 0.94764006, 0.5737275, -1.4486101, 0.03438775, 0.7499217, 1.4486101, 0.017733054, 0.74271727, -1.1502545, 0.21459393, 0.8352779, 1.4729836, 0.021087958, 0.737079, -1.1502545, 0.24994022, 0.85, 1.4735708, 0.0394201, 0.7425606, -1.4489037, 0.6544456, 0.7499217, -1.1502545, 0.44991636, 0.85, -1.4491973, 0.82722306, 0.703563, 1.5, 0.80134237, 0.65877056, 1.4929523, 0.8142827, 0.68116677, 1.4741583, 0.65360683, 0.7431872, 1.4744518, 0.82374835, 0.6976116, 1.4489038, 0.953631, 0.577173, 1.4491973, 0.9998807, 0.40442443, 1.4483163, 0.03438775, 0.7499217, 1.1499608, 0.21459393, 0.8352779, 1.1499608, 0.24994022, 0.85, 1.1499608, 0.44991636, 0.85, 1.4489038, 0.82722306, 0.703563, 1.4486101, 0.6544456, 0.7499217)
+
+[node name="Main" type="Node3D" unique_id=1362484530]
+script = ExtResource("1_w48qg")
+
+[node name="Sky3D" type="WorldEnvironment" parent="." unique_id=354169385]
+environment = SubResource("Environment_1u8w0")
+camera_attributes = SubResource("CameraAttributesPractical_0odxb")
+script = ExtResource("10_cegan")
+editor_time_enabled = false
+current_time = 11.0
+minutes_per_day = 24.0
+wind_direction = 2.35619451204804
+metadata/_custom_type_script = "uid://deo0gxkmk2ahd"
+
+[node name="SunLight" type="DirectionalLight3D" parent="Sky3D" unique_id=1867031001]
+transform = Transform3D(0.94831353, -0.23983966, 0.20779414, 0, 0.65481013, 0.7557934, -0.31733495, -0.7167291, 0.6209653, 0.20779414, 0.7557934, 0.6209653)
+shadow_enabled = true
+
+[node name="MoonLight" type="DirectionalLight3D" parent="Sky3D" unique_id=547074921]
+transform = Transform3D(0, -0.0044120746, 0.9999903, -0.7972586, -0.60363203, -0.0026632953, 0.6036379, -0.79725087, -0.0035175644, 0.9999903, -0.0026632953, -0.0035175644)
+light_color = Color(0.572549, 0.776471, 0.956863, 1)
+light_energy = 0.0
+
+[node name="SkyDome" type="Node" parent="Sky3D" unique_id=73473413]
+script = ExtResource("11_82xsv")
+sun_azimuth = -2.8186748
+sun_altitude = -0.7139314
+moon_azimuth = -1.5672787
+moon_altitude = -1.5734596
+wind_direction = 2.35619451204804
+
+[node name="TimeOfDay" type="Node" parent="Sky3D" unique_id=1499951093]
+script = ExtResource("12_getpj")
+editor_time_enabled = false
+dome_path = NodePath("../SkyDome")
+minutes_per_day = 24.0
+current_time = 11.0
+day = 2
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=594652998]
+transform = Transform3D(-0.3271354, 0.36956605, -0.8697145, 0, 0.9203548, 0.39108452, 0.94497746, 0.1279376, -0.30108064, -15.796987, 8.493023, 0.59673786)
+cull_mask = 262143
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1971675753]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_ig7tw")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="OceanArea" type="OceanArea" parent="." unique_id=332520269 node_paths=PackedStringArray("clipmap_instance", "ocean_detailer")]
+wave_sampler = SubResource("WaveSampler_h2yge")
+ocean_update = 2
+clipmap_instance = NodePath("ClipMapInstance")
+ocean_detailer = NodePath("OceanDetailer")
+show_debug = true
+
+[node name="ClipMapInstance" type="ClipMapInstance" parent="OceanArea" unique_id=1923699970]
+lod_levels = 5
+layers = 4293918721
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 1)
+
+[node name="OceanDetailer" type="OceanDetailer" parent="OceanArea" unique_id=435694596 node_paths=PackedStringArray("follow_target")]
+follow_target = NodePath("../../Camera3D")
+transparent_bg = true
+use_hdr_2d = true
+size = Vector2i(4096, 4096)
+
+[node name="Level" parent="." unique_id=831782046 instance=ExtResource("15_vivmo")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Level" unique_id=930453753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6904826, -1.9565842)
+mass = 150.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -1, 0)
+metadata/_edit_group_ = true
+
+[node name="RigidBuoyancy" type="RigidBuoyancy" parent="Level/RigidBody3D" unique_id=1096853102 node_paths=PackedStringArray("collider")]
+collider = NodePath("../CollisionShape3D")
+buoyancy_material = SubResource("BuoyancyMaterial_yaehf")
+
+[node name="Couch" type="MeshInstance3D" parent="Level/RigidBody3D" unique_id=1343390493]
+material_overlay = SubResource("ShaderMaterial_getpj")
+mesh = ExtResource("15_2cqfq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/RigidBody3D" unique_id=967293419]
+shape = SubResource("ConvexPolygonShape3D_074og")

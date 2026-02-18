@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://brqjryk31kwwu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xgho"]
+albedo_color = Color(0.462147, 0.43728843, 0.41011238, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u52ul"]
+rough = true
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vonw3"]
+size = Vector2(10000, 10000)
+subdivide_width = 10
+subdivide_depth = 10
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oi3di"]
+
+[node name="Level" type="Node3D" unique_id=831782046]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=882593825]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D" unique_id=228330165]
+transform = Transform3D(0.998655, -0.002197385, -0.051801343, 0, 0.9991015, -0.042381346, 0.051847927, 0.042324346, 0.99775773, -3.7246735, -4.6331863, -15.975957)
+use_collision = true
+collision_mask = 15
+size = Vector3(10, 33, 10)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D" unique_id=124157825]
+transform = Transform3D(1, 0, 0, 0, 0.9970821, 0.07633618, 0, -0.07633618, 0.9970821, 12.648214, -2.19127, -14.17078)
+use_collision = true
+collision_mask = 15
+size = Vector3(10, 40.299805, 10)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Node3D" unique_id=1004518922]
+transform = Transform3D(-0.116160646, 0.43495852, -0.8929266, 0.045616426, 0.9004003, 0.4326647, 0.99218255, 0.009526485, -0.12443226, 35.093124, -11.019835, -14.353086)
+use_collision = true
+collision_mask = 15
+size = Vector3(10, 42.057617, 10)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D" unique_id=630650598]
+transform = Transform3D(0.99815077, 0.060787227, 0, -0.060787227, 0.99815077, 0, 0, 0, 1, 21.729805, -2.1620774, 12.230482)
+use_collision = true
+collision_mask = 15
+size = Vector3(10, 38, 10)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D" unique_id=982872164]
+transform = Transform3D(0.9953442, -0.0963843, 0, 0.0963843, 0.9953442, 0, 0, 0, 1, -14.207414, -2.8477576, 13.723656)
+use_collision = true
+collision_mask = 15
+size = Vector3(10, 36, 10)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Node3D" unique_id=1310518728]
+transform = Transform3D(1, 0, 0, 0, 0.9995793, 0.029003303, 0, -0.029003303, 0.9995793, 5.881092, -0.66210556, 14.387999)
+use_collision = true
+collision_mask = 15
+size = Vector3(10, 31.661133, 10)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Node3D" unique_id=1603107619]
+transform = Transform3D(-0.03255414, -0.001982542, 0.999468, -0.060787227, 0.99815077, 0, -0.9976198, -0.06075489, -0.03261445, 26.524271, -4.6574545, 34.067024)
+use_collision = true
+collision_mask = 15
+size = Vector3(10, 43, 10)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Node3D" unique_id=1613271422]
+transform = Transform3D(-0.121819235, 0.011796383, 0.9924821, 0.096384294, 0.99534416, 0, -0.9878614, 0.0956597, -0.122389056, -4.44095, -5.83379, 34.68967)
+use_collision = true
+collision_mask = 15
+size = Vector3(10, 42, 10)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Node3D" unique_id=538930182]
+transform = Transform3D(0.04576403, 0.028972916, -0.998532, 0, 0.9995793, 0.029003303, 0.99895227, -0.001327308, 0.045744777, 10.317585, -3.830206, 35.824055)
+use_collision = true
+collision_mask = 15
+size = Vector3(10, 38, 10)
+material = SubResource("StandardMaterial3D_5xgho")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1106339829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_u52ul")
+
+[node name="GroundPlane" type="MeshInstance3D" parent="Ground" unique_id=745493290]
+mesh = SubResource("PlaneMesh_vonw3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1719365702]
+shape = SubResource("WorldBoundaryShape3D_oi3di")
