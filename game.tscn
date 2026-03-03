@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bvt4747kc5u2t"]
+
+[ext_resource type="Script" uid="uid://b1p1lnectvs25" path="res://game.gd" id="1_1il7v"]
+[ext_resource type="PackedScene" uid="uid://b1ot6gn6tms6h" path="res://player/player_controller.tscn" id="1_w0p8v"]
+[ext_resource type="PackedScene" uid="uid://cnedxfn2pxh2t" path="res://game/gym/gym.tscn" id="7_2frud"]
+[ext_resource type="PackedScene" uid="uid://bxg6oejpaitdt" path="res://game/gym/interactable/flag/flag_reached_screen.tscn" id="19_cpgj4"]
+
+[node name="Game" type="Node" unique_id=244119779]
+script = ExtResource("1_1il7v")
+
+[node name="PlayerController" parent="." unique_id=1713619913 instance=ExtResource("1_w0p8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.635937, 10.666719, 10.72815)
+collision_mask = 3
+pitch_variation = 0.05
+jump_impulse = 14.0
+min_jump_velocity = 4.0
+stopping_speed = 5.0
+landing_animation_scale = 0.6
+edge_grab_ray_length = 0.42
+edge_grab_jump_impulse = 14.0
+edge_grab_forward_offset = 0.12
+edge_grab_vertical_offset = 0.8
+wall_slide_gravity_scale = 0.3
+wall_jump_impulse = 12.0
+wall_jump_push_off = 14.0
+wall_slide_max_angle = 90.0
+
+[node name="FlagReachedScreen" parent="." unique_id=1740309019 instance=ExtResource("19_cpgj4")]
+
+[node name="Level" parent="." unique_id=303751945 instance=ExtResource("7_2frud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.4)
+metadata/_edit_lock_ = true
