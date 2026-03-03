@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PhantomCameraManager="*uid://duq6jhf6unyis"
+Events="*uid://de1i108sijji"
 
 [debug_draw_3d]
 

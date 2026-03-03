@@ -29,4 +29,3 @@ wall_slide_max_angle = 90.0
 
 [node name="Level" parent="." unique_id=303751945 instance=ExtResource("7_2frud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.4)
-metadata/_edit_lock_ = true
